@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\admin\BaseController;
+use App\Http\Controllers\dashboard\PostController;
+use App\Http\Controllers\dashboard\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -45,5 +47,8 @@ Route::get('test/name/{name?}', function($name) {
 // Route::resource('post', BaseController::class);
 
 Route::get('test/email/{mail}', [BaseController::class, 'email'])->name('email');
+
+Route::resource('post', PostController::class);
+Route::resource('category', CategoryController::class);
 
 ?>
