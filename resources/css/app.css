@@ -1,3 +1,49 @@
+@import 'css@/ex.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
+
+table {
+    @apply table-auto w-full;
+    th { @apply bg-gray-100 border-b border-gray-200 p-2 px-6 py-2 bg-gray-50 font-sans text-green-400 uppercase border leading-3 tracking-wider; }
+    td { @apply border-b border-gray-200 p-2 px-6 py-3; }
+    
+} 
+.acciones {
+    @apply flex justify-around items-center
+}
+.acciones a {
+    @apply bg-green-500 text-white p-2 rounded-md
+}
+
+.form-control {
+    @apply rounded-sm shadow-sm border border-gray-300 focus:border-green-400 focus:ring focus:ring-green-400 focus:ring-opacity-50 w-full
+}
+
+.label-control {
+    @apply text-sm font-medium text-white bg-green-500 p-2 rounded-sm
+}
+
+button {
+    @apply bg-green-500 text-white p-2 rounded-md transition-all duration-300 ease-in-out
+}
+
+.card {
+    @apply p-6 rounded-sm shadow-sm
+}
+
+.card-white {
+    @apply bg-white
+}
+
+.card-success {
+    @apply bg-green-100
+}
+
+.card-danger {
+    @apply bg-red-100
+}
+

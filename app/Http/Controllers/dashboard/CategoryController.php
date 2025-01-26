@@ -14,6 +14,9 @@ final class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    protected $data;
+
     public function index() : \Illuminate\Contracts\View\View // response
     {   
         $data = [

@@ -1,48 +1,48 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title }}</title>
-    <link rel="shortcut icon" href="{{ asset('images/v2.png') }}" type="">
-    <style>
-        table {
-            width: 100%; /* Ocupa todo el ancho disponible */
-            border-collapse: collapse; /* Quita los bordes dobles */
-            margin: 20px 0; /* Agrega margen superior e inferior */
-            font-size: 16px; /* Ajusta el tamaño de la fuente */
-            font-family: Arial, sans-serif; /* Fuente legible */
-        }
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        table th, table td {
-            border: 1px solid #ddd; /* Bordes de la tabla */
-            padding: 8px; /* Espaciado dentro de las celdas */
-            text-align: center; /* Alineación del texto */
-        }
+        <title>{{ $title }} | {{ $n_system }}</title>
 
-        table th {
-            font-weight: bold; /* Texto en negrita */
-        }
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        table caption {
-            margin-bottom: 10px; /* Espacio debajo del título */
-            font-size: 18px; /* Tamaño del título */
-            font-weight: bold; /* Negrita */
-        }
-    </style>
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body class="font-sans antialiased">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+            @include('layouts.navigation')
 
+            <!-- Page Heading -->
+            @isset($header)
+                <header class="bg-white dark:bg-gray-800 shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endisset
 
-</head>
-<body style="background-color:rgb(185, 169, 169);">
-    
-    <h1>Base de dashboard en <code>html x blade</code> para el {{ $subtitle }}</h1>
+            <!-- Page Content -->
+            <main>
+                <h1 class="text-green-500">Base de dashboard en <code>html x blade</code> para el {{ $subtitle }}</h1>
 
-    @include('dashboard.fragments._errors-form')
-    @include('dashboard.fragments._success-form')
-    
-    @yield('content')
+                <div class="container mx-auto">
 
+                    @include('dashboard.fragments._errors-form')
+                    @include('dashboard.fragments._success-form')
+
+                    <div class="card card-white">
+                        @yield('content')
+                    </div>
+                </div>
+
+            </main>
+        </div>
     @extends('scripts')
-
-</body>
+    </body>
 </html>
