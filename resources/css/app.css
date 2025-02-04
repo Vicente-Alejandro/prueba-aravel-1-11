@@ -47,3 +47,6 @@ button {
     @apply bg-red-100
 }
 
+h1 {
+    @apply text-3xl font-bold text-green-500
+}

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\dashboard\PostController;
+use App\Http\Controllers\blog\BlogController;
 use App\Http\Controllers\dashboard\CategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', UserAccessDashbo
     Route::get('/', function() {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::group(['prefix' => 'blog'], function() {
+    Route::get('/', [BlogController::class, 'index'])->name('blog');
+    Route::get('/show/{post}', [BlogController::class, 'show'])->name('blog.show');
 });
 
 require __DIR__.'/auth.php';

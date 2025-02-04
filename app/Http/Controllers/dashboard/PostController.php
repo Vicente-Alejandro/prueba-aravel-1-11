@@ -9,7 +9,9 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Exception;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB as d;
 
 class PostController extends Controller
 {
@@ -28,7 +30,7 @@ class PostController extends Controller
             'posts' => Post::select('id','name', 'slug', 'description', 'content', 'category_id', )->orderBy('id', 'desc')->paginate(5),
         ];
 
-        return view('dashboard.post.index', $data);
+        return view('dashboard.post.index', $data); 
 
     }
 
